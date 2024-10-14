@@ -1,8 +1,12 @@
-import { useState } from "react";
-import "./App.css";
+import React from "react";
+import Navbar from "./components/Navbar";
 
 function App() {
-  return <>Start Your Work !</>;
+  return (
+    <div className="w-full">
+      <Navbar />
+    </div>
+  );
 }
 
 export default App;
