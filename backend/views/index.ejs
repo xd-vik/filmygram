@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Post</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white">
+    <h1 class="flex item-center justify-center mt-3 text-3xl text-bold">Create</h1>
+    <hr>
+    <form action="/api/create" method="post" class="flex item-center justify-center p-3 gap-3">
+        <input class="px-5 py-3 bg-transparent bg-zinc-800 outline-none rounded-lg" required name="userid" type="text" placeholder="Enter Userid"/> 
+        <input class="px-5 py-3 bg-transparent bg-zinc-800 outline-none rounded-lg" required name="password" type="password" placeholder="Enter Password"/>   
+        <input class="px-5 py-3 bg-blue-800 outline-none rounded-lg cursor-pointer" type="submit"  />
+    </form>
+
+    <!-- <h1 class="flex item-center justify-center mt-3 text-3xl text-bold">delete</h1>
+    <hr>
+    <form action="/delete" method="post" class="flex item-center justify-center p-3 gap-3">
+        <input class="px-5 py-3 bg-transparent bg-zinc-800 outline-none rounded-lg" required name="id" type="number" placeholder="Enter id"/>  
+        <input class="px-5 py-3 bg-blue-800 outline-none rounded-lg cursor-pointer" type="submit"  />
+    </form>
+
+    <h1 class="flex item-center justify-center mt-3 text-3xl text-bold">Edit</h1>
+    <hr>
+    <form action="/edit" method="post" class="flex item-center justify-center p-3 gap-3">
+        <input class="px-5 py-3 bg-transparent bg-zinc-800 outline-none rounded-lg" required name="id" type="number" placeholder="Enter id"/>  
+        <input class="px-5 py-3 bg-blue-800 outline-none rounded-lg cursor-pointer" type="submit"  />
+    </form>-->
+
+    <div class="flex item-center justify-center mt-3 text-3xl text-bold">
+        <a href="/api/read">Show All</a>
+    </div> 
+
+    
+
+    
+</body>
+</html>
