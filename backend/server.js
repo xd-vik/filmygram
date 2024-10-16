@@ -10,7 +10,7 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 // GET route for the homepage ( ispe dhyaan mat do ye ejs dashboard hai checking ke liye)
 app.get("/api", (req, res) => {
@@ -20,28 +20,31 @@ app.get("/api", (req, res) => {
 // Login route
 app.post('/api/login', async (req, res) => {
     let { userid, password } = req.body;
-    // console.log(userid,password);
     try {
-        const user = await userModel.findOne({ userid:userid });
-        // console.log(user)
+        const user = await userModel.findOne({ userid: userid });
         if (!user) {
             return res.status(422).json({ message: 'Invalid user ID or password' });
         }
-        bcrypt.compare(password, user.password, function(err, result) {
-            // result == true
-            // console.log(result)
+
+        bcrypt.compare(password, user.password, function (err, result) {
+            if (err) {
+                console.error('Bcrypt error:', err);
+                return res.status(500).json({ message: 'Internal server error' });
+            }
             if (!result) {
                 return res.status(422).json({ message: 'Invalid user ID or password' });
             }
+
+            // If login is successful, send a success response
+            return res.status(200).json({ message: 'Login successful' });
         });
-        // If login is successful, send a success response
-        res.status(200).json({ message: 'Login successful' });
 
     } catch (error) {
         console.error('Login error:', error);
-        res.status(500).json({ message: 'Internal serverrrr error' });
+        res.status(500).json({ message: 'Internal server error' });
     }
 });
+
 
 // (ispe bhi dhyan mat do ye database dekhane ke liye hai entry kitni hai)
 app.get('/api/read', async (req,res)=>{
