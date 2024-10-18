@@ -1,31 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Cookies from 'js-cookie';
+
 const AdminLogin = () => {
   const [userid, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    console.log(userid, password);
-
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userid,
-        password,
-      }),
-    });
-    if (res.ok) {
-      console.log("Correct user");
-      navigate(`/admin/${userid}`);
-    } else {
-      console.log("Wrong details");
-      setUserId("");
-      setPassword("");
     }
     // console.log(res)
   };

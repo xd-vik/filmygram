@@ -17,6 +17,7 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.7.1"
+    "mongoose": "^8.7.1",
+    "routes": "^2.1.0"
   }
 }
