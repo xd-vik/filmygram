@@ -1,18 +1,38 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Cookies from 'js-cookie';
+
 const AdminLogin = () => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (userId === "vik" && password === "vik") {
-      localStorage.setItem("authToken", "viktoken");
-      navigate(`/admin/${userId}/add-new`);
-    } else {
-      alert("Invalid credentials");
+    
+    try {
+      const response = await fetch("/api/v1/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userid: userId, password }),
+      });
+
+      const data = await response.json();
+      console.log(response);
+      if (response.ok) {
+        // Set cookie with the token
+        Cookies.set("authToken", data.token, { expires: 1 }); // Expires in 1 day
+        navigate(`/admin/${userId}/add-new`);
+      } else {
+        // alert(data.message || "Invalid credentials");
+        console.log("Invalid details");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      // alert("An error occurred. Please try again.");
     }
   };
 
