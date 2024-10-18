@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AddNew from "../DashboardComponent/AddNew";
 
 import Cookies from 'js-cookie';
 
@@ -25,7 +26,7 @@ const AdminLogin = () => {
       if (response.ok) {
         // Set cookie with the token
         Cookies.set("authToken", data.token, { expires: 1 }); // Expires in 1 day
-        navigate(/admin/${userId}/add-new);
+        navigate(`/admin/${userId}/add-new`);
       } else {
         // alert(data.message || "Invalid credentials");
         console.log("Invalid details");
@@ -44,7 +45,7 @@ const AdminLogin = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Admin Login</h2>
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} method='POST' className="space-y-4">
           <input
             type="text"
             placeholder="User ID"
