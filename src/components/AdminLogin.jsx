@@ -25,7 +25,7 @@ const AdminLogin = () => {
       if (response.ok) {
         // Set cookie with the token
         Cookies.set("authToken", data.token, { expires: 1 }); // Expires in 1 day
-        navigate(`/admin/${userId}/add-new`);
+        navigate(/admin/${userId}/add-new);
       } else {
         // alert(data.message || "Invalid credentials");
         console.log("Invalid details");
@@ -73,4 +73,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default AdminLogin;
