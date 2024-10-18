@@ -21,7 +21,7 @@ const AdminLogin = () => {
       });
 
       const data = await response.json();
-      console.log(response);
+      // console.log(response);
       if (response.ok) {
         // Set cookie with the token
         Cookies.set("authToken", data.token, { expires: 1 }); // Expires in 1 day
@@ -29,10 +29,14 @@ const AdminLogin = () => {
       } else {
         // alert(data.message || "Invalid credentials");
         console.log("Invalid details");
+        setUserId("");  
+        setPassword("");  
       }
     } catch (error) {
       console.error("Login error:", error);
       // alert("An error occurred. Please try again.");
+      setUserId("");  
+      setPassword("");  
     }
   };
 
