@@ -41,8 +41,9 @@ exports.create = async (req, res) => {
 };
 
 exports.edit = async (req, res) => {
+
     try {
-        const { id } = req.body;
+        const { id } = req.query;
         if (!id) {
             console.log("Pls send valid data");
             return res.status(401).json({
@@ -76,17 +77,26 @@ exports.edit = async (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        let { id, title, overview } = req.body;
-        if (!id || !title || !overview) {
+        let { id, title, description, avatarUrl, screenshotsUrl, storyLine, ...remains } = req.body;
+        if (!id || !title || !description || !avatarUrl || !screenshotsUrl || !storyLine || !remains['720p'] || !remains['1080p']) {
             console.log("Pls send valid data");
             return res.status(401).json({
                 success: false,
-                message: "No data found to update"
+                message: "Invalid Data! Provide correct data"
             });
         }
-        let movieUpdated = await movieModel.findOne({ id });
+        
         await movieModel.updateOne({ id }, {
-            id, title, overview
+            id,
+            title,
+            description,
+            avatarUrl,
+            screenshotsUrl,
+            storyLine,
+            "downloadLinks": { 
+                "720p": remains?.["720p"] , 
+                "1080p": remains?.["1080p"] 
+            }
         }, { new: true });
 
         return res.status(200).json({
