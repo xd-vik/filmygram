@@ -5,15 +5,16 @@ const connectDB = require('../db/DB_Connect')
 connectDB();
 
 const movieSchema = new mongoose.Schema({
-    id:{type:Number, unique:true},
-    title:String,
-    overview:String,
-    // img1:String,
-    // img2:String,
-    // img3:String,
-    // dlink1:String,
-    // dlink2:String,
-    // dlink3:String
-})
+    "id":{type:String, unique:true,required:true},
+    "title":{type:String,required:true},
+    "description":{type:String,required:true},
+    "avatarUrl":{type:String,required:true},
+    "screenshotsUrl":{type:[String], required:true},
+    "storyLine":{type:String,required:true},
+    "downloadLinks":{
+        "720p":{type:String,required:true},
+        "1080p":{type:String,required:true}
+    }
+});
 
-module.exports = mongoose.model('movieCollections',movieSchema);
+module.exports = mongoose.model('moviesList',movieSchema);

@@ -1,4 +1,5 @@
 import React from "react";
+import addNew from './AddNew';
 
 const DashboardSidebar = () => {
   return (
@@ -7,7 +8,7 @@ const DashboardSidebar = () => {
       <ul>
         <li className="mb-3">
           <a
-            href="#"
+            href="panel/add-new"
             className="hover:underline hover:text-gray-300 transition duration-200 ease-in-out"
           >
             Add New
@@ -15,10 +16,10 @@ const DashboardSidebar = () => {
         </li>
         <li>
           <a
-            href="#"
+            href="panel/update"
             className="hover:underline hover:text-gray-300 transition duration-200 ease-in-out"
           >
-            Add All
+            Update
           </a>
         </li>
       </ul>

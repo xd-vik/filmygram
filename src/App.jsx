@@ -7,6 +7,7 @@ import AdminLogin from "./components/AdminLogin";
 import AdminDashboard from "./components/AdminDashboard";
 import AddNew from "./DashboardComponent/AddNew";
 import ProtectedRoute from "./components/ProtectedRoutes";  
+import Update from "./DashboardComponent/Update";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         
         {/* Protected routes */}
         <Route 
-          path="/admin/:userID" 
+          path="/admin/panel" 
           element={
             <ProtectedRoute>
               <AdminDashboard />
@@ -27,10 +28,18 @@ function App() {
           } 
         />
         <Route 
-          path="/admin/:userID/add-new" 
+          path="/admin/panel/add-new" 
           element={
             <ProtectedRoute>
               <AddNew />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/admin/panel/update" 
+          element={
+            <ProtectedRoute>
+              <Update/>
             </ProtectedRoute>
           } 
         />
