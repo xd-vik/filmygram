@@ -8,6 +8,7 @@ import AdminDashboard from "./components/AdminDashboard";
 import AddNew from "./DashboardComponent/AddNew";
 import ProtectedRoute from "./components/ProtectedRoutes";  
 import Update from "./DashboardComponent/Update";
+import Delete from "./DashboardComponent/Delete";
 
 function App() {
   return (
@@ -40,6 +41,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Update/>
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/admin/panel/delete" 
+          element={
+            <ProtectedRoute>
+              <Delete/>
             </ProtectedRoute>
           } 
         />

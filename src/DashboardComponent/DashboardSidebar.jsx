@@ -14,12 +14,20 @@ const DashboardSidebar = () => {
             Add New
           </a>
         </li>
-        <li>
+        <li className="mb-3">
           <a
             href="panel/update"
             className="hover:underline hover:text-gray-300 transition duration-200 ease-in-out"
           >
             Update
+          </a>
+        </li>
+        <li className="mb-3">
+          <a
+            href="panel/delete"
+            className="hover:underline hover:text-gray-300 transition duration-200 ease-in-out"
+          >
+            Delete
           </a>
         </li>
       </ul>
